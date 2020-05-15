@@ -1,0 +1,17 @@
+{
+  "name": "contracts",
+  "displayName": "contracts",
+  "expo": {
+    "name": "contracts",
+    "slug": "contracts",
+    "version": "1.0.0",
+    "platforms": [
+      "ios",
+      "android",
+      "web"
+    ],
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
