@@ -6,6 +6,7 @@ import { ProfileScreen } from '../features/profile'
 import { InsuranceScreen } from '../features/insurance'
 import { InventoryScreen } from '../features/inventory'
 import { ProtectionScreen } from '../features/protection'
+import { IconButton } from '../ui/IconButton'
 
 const Tab = createBottomTabNavigator()
 const RootStack = createStackNavigator()
@@ -13,10 +14,26 @@ const RootStack = createStackNavigator()
 const MainStackScreen = () => {
     return (
         <Tab.Navigator initialRouteName="InventoryScreen">
-            <Tab.Screen name="Protection" component={ProtectionScreen} />
-            <Tab.Screen name="Insurance" component={InsuranceScreen} />
-            <Tab.Screen name="Inventory" component={InventoryScreen} />
-            <Tab.Screen name="Profile" component={ProfileScreen} />
+            <Tab.Screen
+                name="Protection"
+                component={ProtectionScreen}
+                options={{ tabBarIcon: () => <IconButton type="home" /> }}
+            />
+            <Tab.Screen
+                name="Insurance"
+                component={InsuranceScreen}
+                options={{ tabBarIcon: () => <IconButton type="umbrella" /> }}
+            />
+            <Tab.Screen
+                name="Inventory"
+                component={InventoryScreen}
+                options={{ tabBarIcon: () => <IconButton type="layers" /> }}
+            />
+            <Tab.Screen
+                name="Profile"
+                component={ProfileScreen}
+                options={{ tabBarIcon: () => <IconButton type="account" /> }}
+            />
         </Tab.Navigator>
     )
 }

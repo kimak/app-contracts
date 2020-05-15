@@ -1,6 +1,19 @@
-import { getStorybookUI, configure } from '@storybook/react-native'
+import React, { ReactNode } from 'react'
+import {
+    getStorybookUI,
+    configure,
+    addDecorator,
+} from '@storybook/react-native'
 
 import './rn-addons'
+import { ThemeProvider } from '../src/ui/ThemeProvider'
+import { ScrollView } from 'react-native-gesture-handler'
+
+addDecorator((storyFn: () => ReactNode) => (
+    <ThemeProvider>
+        <ScrollView style={{ margin: 16 }}>{storyFn()}</ScrollView>
+    </ThemeProvider>
+))
 
 // import stories
 configure(() => {
