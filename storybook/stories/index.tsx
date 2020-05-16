@@ -15,6 +15,7 @@ import { defaultTheme, Color } from '../../src/ui/theme'
 import { ImageBox } from '../../src/ui/ImageBox'
 import { CardImage } from '../../src/ui/CardImage'
 import { Card } from '../../src/ui/Card'
+import { Select } from '../../src/ui/Select'
 
 storiesOf('Welcome', module).add('to Storybook', () => (
     <Welcome showApp={linkTo('Button')} />
@@ -78,6 +79,19 @@ storiesOf('form', module).add('TextInput', () => (
     <>
         <TextInput label="Email" />
         <TextInput label="Email" error />
+    </>
+))
+
+storiesOf('form', module).add('Select', () => (
+    <>
+        <Select
+            label="select"
+            data={[
+                { label: 'Item 1', value: 1 },
+                { label: 'Item 2', value: 2 },
+                { label: 'Item 3', value: 3 },
+            ]}
+        />
     </>
 ))
 

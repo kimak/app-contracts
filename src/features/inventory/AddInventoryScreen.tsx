@@ -6,6 +6,7 @@ import { useTheme } from '../../ui/ThemeProvider'
 import { ScrollView } from 'react-native-gesture-handler'
 import { Text } from '../../ui/Text'
 import { ImageBox } from '../../ui/ImageBox'
+import { Select } from '../../ui/Select'
 
 export const AddInventoryScreen = () => {
     const t = useT()
@@ -23,7 +24,14 @@ export const AddInventoryScreen = () => {
             </Box>
             <Box>
                 <TextInput label={t('inventory:name')} />
-                <TextInput label={t('inventory:category')} />
+                <Select
+                    label={t('inventory:category')}
+                    data={[
+                        { label: 'Item 1', value: 1 },
+                        { label: 'Item 2', value: 2 },
+                        { label: 'Item 3', value: 3 },
+                    ]}
+                />
                 <TextInput label={t('inventory:purschaseDate')} />
                 <TextInput label={t('inventory:purchaseValue')} />
                 <TextInput label={t('inventory:description')} />

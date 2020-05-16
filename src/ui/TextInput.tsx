@@ -5,6 +5,9 @@ import { useTheme } from './ThemeProvider'
 interface TextInputProps {
     label: string
     error?: boolean
+    pointerEvents?: 'box-none' | 'none' | 'box-only' | 'auto'
+    value?: string
+    controlled?: boolean
 }
 
 export const TextInput = (props: TextInputProps) => {
@@ -12,9 +15,10 @@ export const TextInput = (props: TextInputProps) => {
     const theme = useTheme()
     return (
         <PaperTextInput
+            pointerEvents={props.pointerEvents}
             label={props.label}
             error={props.error}
-            value={value}
+            value={props.controlled ? props.value : value}
             onChangeText={(text) => setValue(text)}
             mode="flat"
             style={{
