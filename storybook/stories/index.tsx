@@ -20,8 +20,8 @@ storiesOf('Welcome', module).add('to Storybook', () => (
     <Welcome showApp={linkTo('Button')} />
 ))
 
-const createBox = (color: string) => (
-    <Box width={50} height={50} margin={10} backgroundColor={color} />
+const createBox = (color: string, key?: string) => (
+    <Box key={key} width={50} height={50} margin={10} backgroundColor={color} />
 )
 
 storiesOf('foundation', module).add('colors', () => (
@@ -41,11 +41,10 @@ storiesOf('foundation', module).add('IconButton', () => (
     <>
         {Object.keys(iconTypes).map((key) => (
             <Row key={key} alignItems="center">
-                <IconButton type={key as IconType} key={key} />
+                <IconButton type={key as IconType} />
                 <Text>{key}</Text>
             </Row>
         ))}
-        {Object.keys(defaultTheme.colors).map((key) => createBox(key))}
     </>
 ))
 
