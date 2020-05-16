@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, StyleProp, ViewStyle } from 'react-native'
+import { View, ViewStyle } from 'react-native'
 
 type LayoutProps = {
     children?: React.ReactNode[] | React.ReactNode

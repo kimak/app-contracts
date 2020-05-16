@@ -12,6 +12,9 @@ import { Title } from '../../src/ui/Title'
 import { Text } from '../../src/ui/Text'
 import { Box, Row, Column } from '../../src/ui/primitives/Layout'
 import { defaultTheme, Color } from '../../src/ui/theme'
+import { ImageBox } from '../../src/ui/ImageBox'
+import { CardImage } from '../../src/ui/CardImage'
+import { Card } from '../../src/ui/Card'
 
 storiesOf('Welcome', module).add('to Storybook', () => (
     <Welcome showApp={linkTo('Button')} />
@@ -25,10 +28,10 @@ storiesOf('foundation', module).add('colors', () => (
     <>
         <Box backgroundColor="#eee" padding={30}>
             {Object.keys(defaultTheme.colors).map((key) => (
-                <Column>
-                    <Text>{key}</Text>
+                <Row key={key} alignItems="center">
                     {createBox(defaultTheme.colors[key as Color])}
-                </Column>
+                    <Text>{key}</Text>
+                </Row>
             ))}
         </Box>
     </>
@@ -37,7 +40,10 @@ storiesOf('foundation', module).add('colors', () => (
 storiesOf('foundation', module).add('IconButton', () => (
     <>
         {Object.keys(iconTypes).map((key) => (
-            <IconButton type={key as IconType} key={key} />
+            <Row key={key} alignItems="center">
+                <IconButton type={key as IconType} key={key} />
+                <Text>{key}</Text>
+            </Row>
         ))}
         {Object.keys(defaultTheme.colors).map((key) => createBox(key))}
     </>
@@ -50,7 +56,7 @@ storiesOf('foundation', module).add('Text', () => (
     </>
 ))
 
-storiesOf('Layout', module).add('Box', () => (
+storiesOf('layout', module).add('Box / Row / Column', () => (
     <>
         <Text>Box</Text>
         {createBox(defaultTheme.colors.primary)}
@@ -79,5 +85,32 @@ storiesOf('form', module).add('TextInput', () => (
 storiesOf('form', module).add('SearchBar', () => (
     <>
         <SearchBar />
+    </>
+))
+
+storiesOf('components', module).add('ImageBox', () => (
+    <>
+        <ImageBox icon="umbrella" />
+        <ImageBox icon="camera" label="Photos" marginTop={10} />
+        <ImageBox icon="file-document" label="document" marginTop={10} />
+    </>
+))
+
+storiesOf('components', module).add('Cards', () => (
+    <>
+        <Text>Card</Text>
+        <Box margin={40}>
+            <Card width={100} alignItems="center">
+                {createBox(defaultTheme.colors.primary)}
+            </Card>
+        </Box>
+        <Text>CardImage</Text>
+        <Box margin={40}>
+            <CardImage
+                name="name"
+                label="label"
+                source={require('../../src/assets/01.png')}
+            />
+        </Box>
     </>
 ))

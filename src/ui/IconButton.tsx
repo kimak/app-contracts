@@ -20,6 +20,7 @@ const sizes = {
     s: 10,
     m: 20,
     l: 30,
+    xl: 48,
 }
 
 interface IconButtonProps {

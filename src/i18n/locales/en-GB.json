@@ -1,6 +1,15 @@
 {
     "locale": "en-GB",
     "phrases": {
-        "inventory::title": "Inventory"
+        "inventory:title": "Inventory",
+        "inventory:name": "Name",
+        "inventory:category": "Category",
+        "inventory:purschaseDate": "Purchase Date",
+        "inventory:purchaseValue": "Purchase Value",
+        "inventory:description": "Description (optional)",
+        "inventory:documents": "Documents",
+        "inventory:addReceipt": "Add Receipt",
+        "inventory:addPhotos": "Add Photos",
+        "inventory:addPhoto": "Add Photo"
     }
 }

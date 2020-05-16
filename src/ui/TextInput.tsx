@@ -17,7 +17,10 @@ export const TextInput = (props: TextInputProps) => {
             value={value}
             onChangeText={(text) => setValue(text)}
             mode="flat"
-            style={{ backgroundColor: theme.colors.white }}
+            style={{
+                backgroundColor: theme.colors.white,
+                marginTop: theme.spacing.m,
+            }}
         />
     )
 }

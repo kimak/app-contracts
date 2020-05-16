@@ -5,7 +5,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { SafeAreaProvider } from 'react-native-safe-area-context'
 import { ProfileScreen } from '../features/profile'
 import { InsuranceScreen } from '../features/insurance'
-import { InventoryScreen } from '../features/inventory'
+import { InventoryScreen, AddInventoryScreen } from '../features/inventory'
 import { ProtectionScreen } from '../features/protection'
 import { IconButton, IconType } from '../ui/IconButton'
 import { useTheme } from '../ui/ThemeProvider'
@@ -64,7 +64,7 @@ const MainStackScreen = () => {
 export const Navigation = () => (
     <SafeAreaProvider>
         <NavigationContainer>
-            <RootStack.Navigator mode="modal">
+            <RootStack.Navigator mode="modal" initialRouteName="AddInventory">
                 <RootStack.Screen
                     name="Main"
                     component={MainStackScreen}
@@ -72,7 +72,7 @@ export const Navigation = () => (
                 />
                 <RootStack.Screen
                     name="AddInventory"
-                    component={ProfileScreen}
+                    component={AddInventoryScreen}
                 />
             </RootStack.Navigator>
         </NavigationContainer>
