@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Searchbar as PaperSearchBar } from 'react-native-paper'
+import { useTheme } from './ThemeProvider'
 
 interface SearchBarProps {
     onChangeText?: (value: string) => void
@@ -7,6 +8,7 @@ interface SearchBarProps {
 
 export const SearchBar = (props: SearchBarProps) => {
     const [value, setValue] = useState('')
+    const theme = useTheme()
     return (
         <PaperSearchBar
             placeholder="Search"
@@ -18,9 +20,8 @@ export const SearchBar = (props: SearchBarProps) => {
             value={value}
             style={{
                 elevation: 0,
-                // @todo theme: refactor with dynamic value
-                backgroundColor: '#f6f7fc',
-                borderRadius: 10,
+                backgroundColor: theme.colors.third,
+                borderRadius: theme.radii.s,
                 height: 36,
             }}
         />

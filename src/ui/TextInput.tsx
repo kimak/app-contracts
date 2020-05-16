@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { TextInput as PaperTextInput } from 'react-native-paper'
+import { useTheme } from './ThemeProvider'
 
 interface TextInputProps {
     label: string
@@ -8,6 +9,7 @@ interface TextInputProps {
 
 export const TextInput = (props: TextInputProps) => {
     const [value, setValue] = useState('')
+    const theme = useTheme()
     return (
         <PaperTextInput
             label={props.label}
@@ -15,8 +17,7 @@ export const TextInput = (props: TextInputProps) => {
             value={value}
             onChangeText={(text) => setValue(text)}
             mode="flat"
-            // @todo theme: refactor with dynamic value
-            style={{ backgroundColor: '#FFFFFF' }}
+            style={{ backgroundColor: theme.colors.white }}
         />
     )
 }

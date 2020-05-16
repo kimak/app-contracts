@@ -25,13 +25,17 @@ const sizes = {
 interface IconButtonProps {
     type: IconType
     size?: keyof typeof sizes
+    color?: string
+    onPress?: () => void
 }
 
 export const IconButton = (props: IconButtonProps) => {
     return (
         <PaperIconButton
+            onPress={props.onPress}
             icon={props.type}
             size={props.size ? sizes[props.size] : sizes['m']}
+            color={props.color}
         />
     )
 }
