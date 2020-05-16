@@ -11,7 +11,12 @@ import { ScrollView } from 'react-native-gesture-handler'
 
 addDecorator((storyFn: () => ReactNode) => (
     <ThemeProvider>
-        <ScrollView style={{ margin: 16 }}>{storyFn()}</ScrollView>
+        <ScrollView
+            contentContainerStyle={{ flexGrow: 1 }}
+            style={{ margin: 16 }}
+        >
+            {storyFn()}
+        </ScrollView>
     </ThemeProvider>
 ))
 

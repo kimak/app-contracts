@@ -16,6 +16,8 @@ import { ImageBox } from '../../src/ui/ImageBox'
 import { CardImage } from '../../src/ui/CardImage'
 import { Card } from '../../src/ui/Card'
 import { Select } from '../../src/ui/Select'
+import { ImageBoxPicker } from '../../src/ui/ImageBoxPicker'
+import { ImageInfo } from '../../src/sdk/ImagePicker'
 
 storiesOf('Welcome', module).add('to Storybook', () => (
     <Welcome showApp={linkTo('Button')} />
@@ -104,8 +106,16 @@ storiesOf('form', module).add('SearchBar', () => (
 storiesOf('components', module).add('ImageBox', () => (
     <>
         <ImageBox icon="umbrella" />
-        <ImageBox icon="camera" label="Photos" marginTop={10} />
         <ImageBox icon="file-document" label="document" marginTop={10} />
+        <ImageBoxPicker
+            icon="camera"
+            label="Photos"
+            marginTop={10}
+            onFinish={(imageInfo: ImageInfo) => {
+                alert('success: ' + imageInfo.uri)
+            }}
+        />
+        <Text>ImageBoxPicker</Text>
     </>
 ))
 

@@ -1462,11 +1462,6 @@
     color "^3.1.2"
     react-native-iphone-x-helper "^1.2.1"
 
-"@shopify/restyle@^1.0.4":
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/@shopify/restyle/-/restyle-1.0.4.tgz#164b160c53741dfbedffa6ccc67d6680f641d9a7"
-  integrity sha512-vfeAiNKWryNZ2OxIWzRt4iE+fFeMBp4xE7VZwRJI6wnf4wHgjx2IX1sKEvL9rQx2ztIuqfIbR1p/d5XzhEU6Tw==
-
 "@storybook/addon-actions@^5.3.18":
   version "5.3.18"
   resolved "https://registry.yarnpkg.com/@storybook/addon-actions/-/addon-actions-5.3.18.tgz#e3e3b1475cebc9bdd2d563822fba9ac662b2601a"
@@ -3441,6 +3436,13 @@ expo-image-loader@~1.0.0:
   resolved "https://registry.yarnpkg.com/expo-image-loader/-/expo-image-loader-1.0.1.tgz#a83e336768df4dfcb8909aebb6d8152e256d7a72"
   integrity sha512-v7ziP+UGj+LArEmP//XTaqi9iFWRa8LAShNoFwwnpPS9huM8q3I+P16xK+GTo+4bQa1pPSIFBUZ8KqwAc+k8mQ==
 
+expo-image-picker@^8.1.0:
+  version "8.1.0"
+  resolved "https://registry.yarnpkg.com/expo-image-picker/-/expo-image-picker-8.1.0.tgz#014e4f4aaef4c1daf56d13de27a41ef78660aa15"
+  integrity sha512-UMHiDGiflg47A/nfnmJ1gYdB/sEoxB4STVGgMeLNYpUkVR59kUWqsGTyVEtSywNCLPuXPZVB9NaRUd81Rbs7lA==
+  dependencies:
+    expo-permissions "~8.1.0"
+
 expo-keep-awake@~8.1.0:
   version "8.1.0"
   resolved "https://registry.yarnpkg.com/expo-keep-awake/-/expo-keep-awake-8.1.0.tgz#3a1d8aa5a8395d40c7d79e1c93020ae5f848e664"
@@ -3467,7 +3469,7 @@ expo-location@~8.1.0:
   dependencies:
     invariant "^2.2.4"
 
-expo-permissions@~8.1.0:
+expo-permissions@^8.1.0, expo-permissions@~8.1.0:
   version "8.1.0"
   resolved "https://registry.yarnpkg.com/expo-permissions/-/expo-permissions-8.1.0.tgz#a7f2ee91ba76ce3a467e7b10adaa9ca5201b226f"
   integrity sha512-QBHD+1J9+sGFnhoEGzMRchPweeEE0OJ9ehG/0l1BMRBA7qsLS9vRC1FTJ55NwjI0Kr4RTha9r6ZX1kZHT09f/w==
