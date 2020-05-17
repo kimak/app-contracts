@@ -26,7 +26,9 @@ export const ProfileScreen = () => {
             }}
         >
             <Box padding={theme.spacing.m}>
-                <Title>Profile</Title>
+                <Box marginTop={theme.spacing.xl}>
+                    <Title>Profile</Title>
+                </Box>
                 <ImageBox icon="account" alignSelf="center" />
                 {selectData && (
                     <Select
