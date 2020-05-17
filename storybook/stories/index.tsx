@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import { storiesOf } from '@storybook/react-native'
 import { linkTo } from '@storybook/addon-links'
@@ -19,6 +19,9 @@ import { Select } from '../../src/ui/Select'
 import { ImageBoxPicker } from '../../src/ui/ImageBoxPicker'
 import { ImageInfo } from '../../src/sdk/ImagePicker'
 import { TextButton } from '../../src/ui/TextButton'
+import { Modal } from '../../src/ui/Modal'
+import { Button } from '../../src/ui/Button'
+import { InfoAction } from '../../src/ui/InfoAction'
 
 storiesOf('Welcome', module).add('to Storybook', () => (
     <Welcome showApp={linkTo('Button')} />
@@ -55,6 +58,8 @@ storiesOf('foundation', module).add('IconButton', () => (
 storiesOf('foundation', module).add('Text', () => (
     <>
         <Title>Main Title</Title>
+        <Title size="m">Second Title</Title>
+        <Title size="s">third Title</Title>
         <Text>Text</Text>
     </>
 ))
@@ -78,9 +83,10 @@ storiesOf('layout', module).add('Box / Row / Column', () => (
     </>
 ))
 
-storiesOf('button', module).add('TextButton', () => (
+storiesOf('buttons', module).add('Button', () => (
     <>
-        <TextButton>Save</TextButton>
+        <Button onPress={() => {}}>Primary</Button>
+        <TextButton onPress={() => {}}>Secondary</TextButton>
     </>
 ))
 
@@ -144,3 +150,28 @@ storiesOf('components', module).add('Cards', () => (
         </Box>
     </>
 ))
+
+storiesOf('components', module).add('InfoAction', () => (
+    <>
+        <InfoAction
+            title="title"
+            actionLabel="action"
+            description="it can be a long description"
+            icon="camera"
+            onAction={() => {}}
+        />
+    </>
+))
+
+const ModalExample = () => {
+    const [visible, setVisible] = useState(false)
+    return (
+        <>
+            <Button onPress={() => setVisible(true)}>Open Modal</Button>
+            <Modal visible={visible} onDismiss={() => setVisible(false)}>
+                <Text>Hello!</Text>
+            </Modal>
+        </>
+    )
+}
+storiesOf('components', module).add('Modal', () => <ModalExample />)

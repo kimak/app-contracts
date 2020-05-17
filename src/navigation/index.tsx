@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { NavigationContainer, useNavigation } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
@@ -12,6 +12,8 @@ import { useTheme } from '../ui/ThemeProvider'
 import { ContractsProvider, useContracts } from '../features/ContractsProvider'
 import { useT } from '../i18n'
 import { SaveButton } from '../features/inventory/AddInventoryScreen'
+import { Modal } from '../ui/Modal'
+import { InfoAction } from '../ui/InfoAction'
 
 const Tab = createBottomTabNavigator()
 const RootStack = createStackNavigator()
@@ -75,7 +77,7 @@ const BackButton = () => {
 
 export const Navigation = () => {
     const t = useT()
-
+    const [modalVisible, setModalVisible] = useState(false)
     return (
         <SafeAreaProvider>
             <ContractsProvider>
@@ -92,12 +94,32 @@ export const Navigation = () => {
                             options={{
                                 title: t('inventory:add:title'),
                                 headerLeft: () => <BackButton />,
-                                headerRight: () => <SaveButton />,
+                                headerRight: () => (
+                                    <SaveButton
+                                        onSaved={() => {
+                                            setModalVisible(true)
+                                        }}
+                                    />
+                                ),
                             }}
                         />
                     </RootStack.Navigator>
                 </NavigationContainer>
             </ContractsProvider>
+            <Modal
+                visible={modalVisible}
+                onDismiss={() => setModalVisible(false)}
+            >
+                <InfoAction
+                    title={t('inventory:saved:title')}
+                    actionLabel={t('inventory:saved:action')}
+                    description={t('inventory:saved:desc')}
+                    icon="checkbox-marked-circle-outline"
+                    onAction={() => {
+                        setModalVisible(false)
+                    }}
+                />
+            </Modal>
         </SafeAreaProvider>
     )
 }

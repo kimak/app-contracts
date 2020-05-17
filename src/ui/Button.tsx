@@ -1,14 +1,14 @@
 import React from 'react'
 import { Button as PaperButton } from 'react-native-paper'
 
-interface TextButtonProps {
+interface ButtonProps {
     onPress?: () => void
     children: string
 }
 
-export const TextButton = (props: TextButtonProps) => {
+export const Button = (props: ButtonProps) => {
     return (
-        <PaperButton mode="text" onPress={props.onPress}>
+        <PaperButton mode="contained" onPress={props.onPress}>
             {props.children}
         </PaperButton>
     )

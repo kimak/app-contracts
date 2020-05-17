@@ -13,6 +13,7 @@ export const iconTypes = {
     'file-document': true,
     'square-edit-outline': true,
     'chevron-down': true,
+    'checkbox-marked-circle-outline': true,
 }
 
 export type IconType = keyof typeof iconTypes

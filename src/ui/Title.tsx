@@ -1,12 +1,26 @@
 import React from 'react'
 import { Title as PaperTitle } from 'react-native-paper'
 
-interface TitleProps {
-    children: string
+const sizes = {
+    s: 22,
+    m: 28,
+    l: 34,
 }
 
-export const Title = (props: TitleProps) => (
-    <PaperTitle style={{ fontSize: 34, lineHeight: 40, fontWeight: '600' }}>
-        {props.children}
+type TitleSize = keyof typeof sizes
+interface TitleProps {
+    children: string
+    size?: TitleSize
+}
+
+export const Title = ({ children, size = 'l' }: TitleProps) => (
+    <PaperTitle
+        style={{
+            fontSize: sizes[size],
+            lineHeight: 40,
+            fontWeight: '600',
+        }}
+    >
+        {children}
     </PaperTitle>
 )

@@ -13,15 +13,17 @@ import { TextButton } from '../../ui/TextButton'
 import { useNavigation } from '@react-navigation/native'
 import { ImageInfo } from '../../sdk/ImagePicker'
 
-export const SaveButton = () => {
+export const SaveButton = ({ onSaved }: { onSaved: () => void }) => {
     const t = useT()
     const { saveInventoryForm } = useContracts()
     const { goBack } = useNavigation()
+
     return (
         <TextButton
             onPress={async () => {
                 const result = await saveInventoryForm()
                 if (result.success) {
+                    onSaved()
                     goBack()
                 }
             }}

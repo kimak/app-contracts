@@ -12,6 +12,9 @@
         "inventory:addPhotos": "Add Photos",
         "inventory:addPhoto": "Add Photo",
         "inventory:add:title": "New Object",
-        "inventory:button:save": "Save"
+        "inventory:button:save": "Save",
+        "inventory:saved:title": "Object successfully added",
+        "inventory:saved:desc": "Your Chopard watch has been added to your inventory. If something ever happens to it, it’ll be covered and refunded.",
+        "inventory:saved:action": "Great !"
     }
 }
