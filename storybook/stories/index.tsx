@@ -18,6 +18,7 @@ import { Card } from '../../src/ui/Card'
 import { Select } from '../../src/ui/Select'
 import { ImageBoxPicker } from '../../src/ui/ImageBoxPicker'
 import { ImageInfo } from '../../src/sdk/ImagePicker'
+import { TextButton } from '../../src/ui/TextButton'
 
 storiesOf('Welcome', module).add('to Storybook', () => (
     <Welcome showApp={linkTo('Button')} />
@@ -77,6 +78,12 @@ storiesOf('layout', module).add('Box / Row / Column', () => (
     </>
 ))
 
+storiesOf('button', module).add('TextButton', () => (
+    <>
+        <TextButton>Save</TextButton>
+    </>
+))
+
 storiesOf('form', module).add('TextInput', () => (
     <>
         <TextInput label="Email" />
@@ -89,9 +96,9 @@ storiesOf('form', module).add('Select', () => (
         <Select
             label="select"
             data={[
-                { label: 'Item 1', value: 1 },
-                { label: 'Item 2', value: 2 },
-                { label: 'Item 3', value: 3 },
+                { label: 'Item 1', value: '1' },
+                { label: 'Item 2', value: '2' },
+                { label: 'Item 3', value: '3' },
             ]}
         />
     </>

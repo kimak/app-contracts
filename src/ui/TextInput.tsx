@@ -8,23 +8,37 @@ interface TextInputProps {
     pointerEvents?: 'box-none' | 'none' | 'box-only' | 'auto'
     value?: string
     controlled?: boolean
+    onChange?: (value: string) => void
+    placeholder?: string
+    type?: 'text' | 'number'
 }
 
-export const TextInput = (props: TextInputProps) => {
-    const [value, setValue] = useState('')
+export const TextInput = ({
+    label,
+    error,
+    pointerEvents,
+    controlled,
+    value,
+    onChange,
+    placeholder,
+    type = 'text',
+}: TextInputProps) => {
+    const [innerValue, setValue] = useState('')
     const theme = useTheme()
     return (
         <PaperTextInput
-            pointerEvents={props.pointerEvents}
-            label={props.label}
-            error={props.error}
-            value={props.controlled ? props.value : value}
-            onChangeText={(text) => setValue(text)}
+            pointerEvents={pointerEvents}
+            label={label}
+            error={error}
+            value={controlled ? value : innerValue}
+            onChangeText={!controlled ? (text) => setValue(text) : onChange}
             mode="flat"
+            placeholder={placeholder}
             style={{
                 backgroundColor: theme.colors.white,
                 marginTop: theme.spacing.m,
             }}
+            keyboardType={type === 'text' ? 'default' : 'numeric'}
         />
     )
 }

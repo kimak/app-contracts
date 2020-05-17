@@ -17,13 +17,13 @@ export const ImageBoxPicker = ({
     const [visible, setVisible] = useState(false)
     const [imageUri, setImageUri] = useState<string>()
 
-    const updateResult = useCallback((result: ImagePickerResult) => {
+    const updateResult = (result: ImagePickerResult) => {
         if (!result?.cancelled && result?.uri) {
             setImageUri(result.uri)
             if (onFinish) onFinish(result)
         }
         setVisible(false)
-    }, [])
+    }
     return (
         <Menu
             visible={visible}

@@ -5,8 +5,8 @@ import { IconButton } from './IconButton'
 import { TouchableOpacity } from 'react-native-gesture-handler'
 import { Box } from './primitives/Layout'
 
-interface SelectOption {
-    value: string | number
+export interface SelectOption {
+    value: string
     label: string
 }
 
@@ -14,12 +14,14 @@ interface SelectProps {
     label: string
     error?: boolean
     data: SelectOption[]
+    onSelect?: (option: SelectOption) => void
+    initialIndex?: number
 }
 
 export const Select = (props: SelectProps) => {
     const [visible, setVisible] = useState(false)
-    const [index, setIndex] = useState<number>()
-    const { data, label } = props
+    const { data, label, onSelect, initialIndex } = props
+    const [index, setIndex] = useState<number | undefined>(initialIndex)
     return (
         <Menu
             visible={visible}
@@ -37,6 +39,15 @@ export const Select = (props: SelectProps) => {
                     <Box position="absolute" bottom={0} right={0}>
                         <IconButton type="chevron-down" />
                     </Box>
+                    <Box
+                        position="absolute"
+                        left={0}
+                        right={0}
+                        top={0}
+                        bottom={0}
+                        height="100%"
+                        opacity={0}
+                    />
                 </TouchableOpacity>
             }
         >
@@ -45,6 +56,7 @@ export const Select = (props: SelectProps) => {
                     key={label + index}
                     onPress={() => {
                         setIndex(index)
+                        if (onSelect) onSelect(data[index])
                         setVisible(false)
                     }}
                     title={item.label}

@@ -1,5 +1,5 @@
-import React from 'react'
-import { NavigationContainer } from '@react-navigation/native'
+import React, { useEffect } from 'react'
+import { NavigationContainer, useNavigation } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { SafeAreaProvider } from 'react-native-safe-area-context'
@@ -9,6 +9,9 @@ import { InventoryScreen, AddInventoryScreen } from '../features/inventory'
 import { ProtectionScreen } from '../features/protection'
 import { IconButton, IconType } from '../ui/IconButton'
 import { useTheme } from '../ui/ThemeProvider'
+import { ContractsProvider, useContracts } from '../features/ContractsProvider'
+import { useT } from '../i18n'
+import { SaveButton } from '../features/inventory/AddInventoryScreen'
 
 const Tab = createBottomTabNavigator()
 const RootStack = createStackNavigator()
@@ -30,6 +33,10 @@ const createTabBarIcon = (type: IconType) => ({
 
 const MainStackScreen = () => {
     const theme = useTheme()
+    const { fetchUserInfo } = useContracts()
+    useEffect(() => {
+        fetchUserInfo()
+    }, [])
     return (
         <Tab.Navigator
             initialRouteName="InventoryScreen"
@@ -61,20 +68,36 @@ const MainStackScreen = () => {
     )
 }
 
-export const Navigation = () => (
-    <SafeAreaProvider>
-        <NavigationContainer>
-            <RootStack.Navigator mode="modal" initialRouteName="AddInventory">
-                <RootStack.Screen
-                    name="Main"
-                    component={MainStackScreen}
-                    options={{ headerShown: false }}
-                />
-                <RootStack.Screen
-                    name="AddInventory"
-                    component={AddInventoryScreen}
-                />
-            </RootStack.Navigator>
-        </NavigationContainer>
-    </SafeAreaProvider>
-)
+const BackButton = () => {
+    const { goBack } = useNavigation()
+    return <IconButton type="close" size="l" onPress={() => goBack()} />
+}
+
+export const Navigation = () => {
+    const t = useT()
+
+    return (
+        <SafeAreaProvider>
+            <ContractsProvider>
+                <NavigationContainer>
+                    <RootStack.Navigator mode="modal" initialRouteName="Main">
+                        <RootStack.Screen
+                            name="Main"
+                            component={MainStackScreen}
+                            options={{ headerShown: false }}
+                        />
+                        <RootStack.Screen
+                            name="AddInventory"
+                            component={AddInventoryScreen}
+                            options={{
+                                title: t('inventory:add:title'),
+                                headerLeft: () => <BackButton />,
+                                headerRight: () => <SaveButton />,
+                            }}
+                        />
+                    </RootStack.Navigator>
+                </NavigationContainer>
+            </ContractsProvider>
+        </SafeAreaProvider>
+    )
+}

@@ -10,44 +10,19 @@ import { FlatList } from 'react-native-gesture-handler'
 import { Box, Row } from '../../ui/primitives/Layout'
 import { useTheme } from '../../ui/ThemeProvider'
 import { CardImage } from '../../ui/CardImage'
-
-const DATA = [
-    {
-        id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
-        name: 'Cartier Ring',
-        price: 5780,
-    },
-    {
-        id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f63',
-        name: 'Lou.Yetu Necklace',
-        price: 60,
-    },
-    {
-        id: '58694a0f-3da1-471f-bd96-145571e29d72',
-        name: 'Chanel Pearl Bracelet',
-        price: 2100,
-    },
-    {
-        id: '58694a0f-3da1-471f-bd96-145571e29d72',
-        name: 'Messika Earrings',
-        price: 10090,
-    },
-    {
-        id: '58694a0f-3da1-471f-bd96-145571esfdsdfsdfs',
-        name: 'Chopard Watch',
-        price: 13420,
-    },
-]
+import { ImageBox } from '../../ui/ImageBox'
+import { useContracts } from '../ContractsProvider'
 
 export const InventoryScreen = () => {
     const { navigate } = useNavigation()
     const t = useT()
     const theme = useTheme()
+    const { contract } = useContracts()
     return (
         <SafeAreaView
             style={{
-                backgroundColor: theme.colors.white,
                 flexGrow: 1,
+                backgroundColor: theme.colors.white,
             }}
         >
             <Box flexGrow={1} flexBasis={1}>
@@ -66,8 +41,19 @@ export const InventoryScreen = () => {
                     <SearchBar />
                 </Box>
                 <FlatList
-                    style={{ backgroundColor: theme.colors.third }}
-                    data={DATA}
+                    style={{ backgroundColor: theme.colors.third, flexGrow: 1 }}
+                    contentContainerStyle={{
+                        flexGrow: 1,
+                    }}
+                    data={contract.data?.inventory}
+                    ListEmptyComponent={
+                        <Box alignItems="center" marginTop={theme.spacing.m}>
+                            <ImageBox
+                                icon="border-none-variant"
+                                label="0 results"
+                            />
+                        </Box>
+                    }
                     numColumns={2}
                     renderItem={({ item, index }) => (
                         <Box
@@ -80,11 +66,11 @@ export const InventoryScreen = () => {
                             }
                             marginTop={theme.spacing.m}
                         >
-                            {/* @todo manage dynamic currency and source */}
+                            {/* @todo manage dynamic currency */}
                             <CardImage
                                 name={item.name}
                                 label={item.price.toString() + '€'}
-                                source={require('../../assets/01.png')}
+                                source={{ uri: item.pictureUri }}
                             />
                         </Box>
                     )}
