@@ -43,3 +43,8 @@ expo publish --target managed
 
 -   [Open the project in expo client app](https://expo.io/@kimak/contracts)
 -   [Open the Design System in expo client app](https://expo.io/@kimak/contracts?release-channel=designsystem)
+
+### Experimental
+
+-   Web app deploy https://contracts-sable.now.sh/
+-   Web storybook deploy https://contracts-ui.now.sh/
